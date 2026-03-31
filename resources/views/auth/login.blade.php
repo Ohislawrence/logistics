@@ -7,6 +7,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'AniqueLogistics') }} - Login</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ asset('images/aniquelogistics-logo-transparent.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/aniquelogistics-logo-transparent.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/aniquelogistics-logo-transparent.png') }}">
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
 
@@ -482,7 +487,7 @@
                     <!-- Logo Section -->
                     <div class="logo-section">
                         <div class="logo-icon">
-                            <i class="bi bi-capsule"></i>
+                            <img src="{{ asset('images/aniquelogistics-logo-transparent.png') }}" alt="AniqueLogistics" style="width: 80px; height: 80px; object-fit: contain;">
                         </div>
                         <h1 class="logo-text">AniqueLogistics</h1>
                         <p class="logo-tagline">Fast & Reliable Drug Delivery</p>

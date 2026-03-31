@@ -14,16 +14,17 @@
             <!-- Left Content -->
             <div class="col-lg-6 mb-5 mb-lg-0 pe-lg-5">
                 <div class="hero-content" data-aos="fade-up">
+                    <!-- Logo -->
+                    <img src="{{ asset('images/aniquelogistics-logo-transparent.png') }}" alt="AniqueLogistics" class="mb-4" style="height: 80px; width: auto;">
                     <!-- Human-centered headline -->
                     <h1 class="display-4 fw-bold mb-4 text-dark leading-tight">
-                        Delivering Hope,
-                        <span class="text-gradient">One Package</span>
-                        at a Time.
+                        Your healthcare,
+                        <span class="text-gradient">excellent delivery</span>
                     </h1>
 
                     <p class="lead text-secondary mb-4 fs-5 lh-relaxed">
-                        Behind every temperature-controlled shipment is a patient waiting.
-                        We bridge the gap between life-saving medications and the people who need them most.
+                        Your Healthcare, Delivered with Excellence, Compassion, and Unmatched Commitment.
+                        Your Partner in Health, Delivering Excellence with Every Interaction and Every Service.
                     </p>
 
                     <!-- CTA Buttons with warmth -->
@@ -502,6 +503,96 @@
         .min-vh-85 {
             min-height: auto;
             padding-top: 2rem;
+        }
+    }
+</style>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/2348144730969?text=Hello%20AniqueLogistics,%20I%20need%20help%20with..." class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Chat with us on WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+    <span class="whatsapp-text">Chat with us</span>
+</a>
+
+<!-- WhatsApp Button Styles -->
+<style>
+    .whatsapp-float {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #25D366;
+        color: white;
+        border-radius: 50px;
+        padding: 15px 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 8px 24px -4px rgba(37, 211, 102, 0.5);
+        z-index: 1000;
+        transition: all 0.3s ease;
+        animation: float-pulse 3s ease-in-out infinite;
+    }
+
+    .whatsapp-float:hover {
+        background: #128C7E;
+        color: white;
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 12px 32px -4px rgba(37, 211, 102, 0.7);
+    }
+
+    .whatsapp-float i {
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .whatsapp-text {
+        white-space: nowrap;
+    }
+
+    @keyframes float-pulse {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        .whatsapp-float {
+            bottom: 20px;
+            right: 20px;
+            padding: 12px;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            justify-content: center;
+        }
+
+        .whatsapp-text {
+            display: none;
+        }
+
+        .whatsapp-float i {
+            font-size: 1.75rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .whatsapp-float {
+            bottom: 15px;
+            right: 15px;
+            width: 50px;
+            height: 50px;
+        }
+
+        .whatsapp-float i {
+            font-size: 1.5rem;
         }
     }
 </style>

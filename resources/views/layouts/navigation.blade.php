@@ -5,9 +5,7 @@
             <!-- Logo + brand -->
             <div class="d-flex align-items-center gap-2">
                 <a href="{{ route('dashboard') }}" class="text-decoration-none d-flex align-items-center gap-2">
-                    <div class="bg-gradient-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
-                        <i class="bi bi-capsule text-white fs-5"></i>
-                    </div>
+                    <img src="{{ asset('images/aniquelogistics-logo-transparent.png') }}" alt="{{ config('app.name') }}" style="height: 38px; width: auto;">
                     <span class="logo-text fw-bold">{{ config('app.name', 'MediSwift') }}</span>
                 </a>
             </div>
