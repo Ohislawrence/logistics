@@ -19,8 +19,25 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = Order::with('assignedTo')->latest()->paginate(20);
-        return view('admin.orders.index', compact('orders'));
+        $orders = Order::with('assignedTo', 'paidBy')->latest()->paginate(20);
+
+        // Calculate stats for the page
+        $pendingOrders = Order::where('status', 'pending')->count();
+        $inTransitOrders = Order::where('status', 'in_transit')->count();
+        $deliveredOrders = Order::where('status', 'delivered')->count();
+
+        return view('admin.orders.index', compact('orders', 'pendingOrders', 'inTransitOrders', 'deliveredOrders'));
+    }
+
+    public function show(Order $order)
+    {
+        $order->load('assignedTo', 'paidBy');
+        $progresses = OrderProgress::where('order_id', $order->id)
+            ->with('reporter')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('admin.orders.show', compact('order', 'progresses'));
     }
 
     public function create()
@@ -102,7 +119,7 @@ class OrderController extends Controller
             }
         }
 
-        return redirect()->route('admin.orders.index')->with('success', 'Order updated.');
+        return redirect()->route('admin.orders.show', $order)->with('success', 'Order updated.');
     }
 
     public function destroy(Order $order)
@@ -138,7 +155,7 @@ class OrderController extends Controller
         // Notify rider
         $rider->notify(new OrderAssigned($order));
 
-        return redirect()->route('admin.orders.index')->with('success', 'Order assigned to rider.');
+        return redirect()->route('admin.orders.show', $order)->with('success', 'Order assigned to rider.');
     }
 
     public function markPaid(Request $request, Order $order)
@@ -161,6 +178,6 @@ class OrderController extends Controller
             'reported_by' => auth()->id(),
         ]);
 
-        return redirect()->route('admin.orders.index')->with('success', 'Order marked as paid.');
+        return back()->with('success', 'Order marked as paid.');
     }
 }

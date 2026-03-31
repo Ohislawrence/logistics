@@ -54,7 +54,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
         return view('admin.dashboard', compact('totalOrders', 'ordersByStatus', 'totalRiders', 'recentOrders', 'totalRevenue'));
     })->name('dashboard');
 
-    Route::resource('orders', OrderController::class)->except(['show']);
+    Route::resource('orders', OrderController::class);
     Route::post('orders/{order}/assign', [OrderController::class, 'assign'])->name('orders.assign');
     Route::post('orders/{order}/mark-paid', [OrderController::class, 'markPaid'])->name('orders.mark_paid');
     // Riders management (admin only)

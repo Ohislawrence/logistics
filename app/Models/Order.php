@@ -28,6 +28,12 @@ class Order extends Model
         'paid_by',
     ];
 
+    protected $casts = [
+        'paid' => 'boolean',
+        'paid_at' => 'datetime',
+        'cost' => 'decimal:2',
+    ];
+
     protected static function booted()
     {
         static::creating(function (Order $order) {

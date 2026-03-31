@@ -165,6 +165,9 @@
                         </td>
                         <td class="text-end pe-4">
                             <div class="d-flex gap-2 justify-content-end">
+                                <a href="{{ route('admin.orders.show', $order) }}" class="btn btn-sm btn-outline-info rounded-pill">
+                                    <i class="bi bi-eye"></i> View
+                                </a>
                                 <a href="{{ route('admin.orders.edit', $order) }}" class="btn btn-sm btn-outline-primary rounded-pill">
                                     <i class="bi bi-pencil"></i> Edit
                                 </a>
@@ -254,7 +257,10 @@
                         @endif
                     </div>
 
-                    <div class="d-flex gap-2">
+                    <div class="d-flex gap-2 mb-2">
+                        <a href="{{ route('admin.orders.show', $order) }}" class="btn btn-sm btn-outline-info flex-grow-1 rounded-pill">
+                            <i class="bi bi-eye"></i> View
+                        </a>
                         <a href="{{ route('admin.orders.edit', $order) }}" class="btn btn-sm btn-outline-primary flex-grow-1 rounded-pill">
                             <i class="bi bi-pencil"></i> Edit
                         </a>
@@ -497,6 +503,48 @@
 
     .page-link:hover {
         background: var(--gray-100);
+    }
+
+    /* Fix dropdown z-index issues */
+    .table tbody tr {
+        position: relative;
+    }
+
+    .table tbody tr:hover {
+        z-index: 10;
+    }
+
+    /* Ensure dropdown menu appears above other rows */
+    .dropdown {
+        position: static;
+    }
+
+    .dropdown-menu {
+        position: absolute !important;
+        z-index: 1050 !important;
+    }
+
+    /* When dropdown is open, ensure it's visible */
+    .dropdown.show {
+        position: relative;
+        z-index: 1055;
+    }
+
+    /* Allow overflow on desktop to show dropdowns */
+    @media (min-width: 992px) {
+        .table-responsive {
+            overflow: visible;
+        }
+
+        .card-glass.overflow-hidden {
+            overflow: visible;
+        }
+    }
+
+    /* For rows near the bottom, adjust dropdown position */
+    .table tbody tr:nth-last-child(-n+2) .dropdown-menu {
+        transform: translateY(-100%);
+        top: -10px;
     }
 </style>
 @endsection
